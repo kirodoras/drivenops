@@ -33,7 +33,7 @@ services:
     container_name: nginx
     build: ./nginx
     ports:
-      - 6001:80
+      - 80:80
     depends_on:
       - drivenops-postgres
       - drivenops-backend
