@@ -6,6 +6,10 @@ const app = express();
 app.use(cors());
 app.use(json());
 
+app.get("/", async (req: Request, res: Response) => {
+  res.send("Server is running");
+});
+
 app.get("/students", async (req: Request, res: Response) => {
   const students = await prisma.student.findMany();
   res.send(students);
