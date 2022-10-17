@@ -1,0 +1,20 @@
+version: '3'
+services:
+  drivenops-postgres:
+    image: postgres
+    container_name: drivenops-postgres
+    restart: always
+    ports:
+      - 4457:5432
+    env_file:
+      - ./back-end/.env.test
+
+  drivenops-backend:
+    container_name: drivenops-backend
+    build: ./back-end
+    ports:
+      - 5000:5000
+    depends_on:
+      - drivenops-postgres
+    env_file:
+      - ./back-end/.env.test
